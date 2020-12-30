@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives | Hexo</title>
+  <title>ts | Hexo</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -167,87 +167,89 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2020/12/29/ts/">ts</a></h4>
-                            
-                            <p><time datetime="2020-12-29T11:20:57.000Z"><a href="/2020/12/29/ts/">2020-12-29</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2020/12/27/react-hooks/">react-hooks</a></h4>
-                            
-                            <p><time datetime="2020-12-27T10:02:11.000Z"><a href="/2020/12/27/react-hooks/">2020-12-27</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2020/12/26/hello-world/">Hello World</a></h4>
-                            
-                            <p><time datetime="2020-12-26T01:48:34.170Z"><a href="/2020/12/26/hello-world/">2020-12-26</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-12-29T11:20:57.000Z" itemprop="datePublished">
+          2020-12-29
+      </time>
+    
+</span>
+                <h1>ts</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h2 id="1-jsx"><a href="#1-jsx" class="headerlink" title="1 jsx"></a>1 jsx</h2><h3 id="JSX是一种嵌入式的类似XML的语法。-它可以被转换成合法的JavaScript，尽管转换的语义是依据不同的实现而定的。-JSX因React框架而流行，但也存在其它的实现。-TypeScript支持内嵌，类型检查以及将JSX直接编译为JavaScript。"><a href="#JSX是一种嵌入式的类似XML的语法。-它可以被转换成合法的JavaScript，尽管转换的语义是依据不同的实现而定的。-JSX因React框架而流行，但也存在其它的实现。-TypeScript支持内嵌，类型检查以及将JSX直接编译为JavaScript。" class="headerlink" title="JSX是一种嵌入式的类似XML的语法。 它可以被转换成合法的JavaScript，尽管转换的语义是依据不同的实现而定的。 JSX因React框架而流行，但也存在其它的实现。 TypeScript支持内嵌，类型检查以及将JSX直接编译为JavaScript。"></a>JSX是一种嵌入式的类似XML的语法。 它可以被转换成合法的JavaScript，尽管转换的语义是依据不同的实现而定的。 JSX因React框架而流行，但也存在其它的实现。 TypeScript支持内嵌，类型检查以及将JSX直接编译为JavaScript。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">基本用法</span><br><span class="line">想要使用JSX必须做两件事：</span><br><span class="line"></span><br><span class="line">给文件一个.tsx扩展名</span><br><span class="line">启用jsx选项</span><br><span class="line">TypeScript具有三种JSX模式：preserve，react和react-native。 这些模式只在代码生成阶段起作用 - 类型检查并不受影响。 在preserve模式下生成代码中会保留JSX以供后续的转换操作使用（比如：Babel）。 另外，输出文件会带有.jsx扩展名。 react模式会生成React.createElement，在使用前不需要再进行转换操作了，输出文件的扩展名为.js。 react-native相当于preserve，它也保留了所有的JSX，但是输出文件的扩展名是.js。</span><br></pre></td></tr></table></figure>
+<h2 id="2-基础类型"><a href="#2-基础类型" class="headerlink" title="2 基础类型"></a>2 基础类型</h2><h3 id="为了让程序有价值，我们需要能够处理最简单的数据单元：数字，字符串，结构体，布尔值等。-TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举类型方便我们使用。"><a href="#为了让程序有价值，我们需要能够处理最简单的数据单元：数字，字符串，结构体，布尔值等。-TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举类型方便我们使用。" class="headerlink" title="为了让程序有价值，我们需要能够处理最简单的数据单元：数字，字符串，结构体，布尔值等。 TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举类型方便我们使用。"></a>为了让程序有价值，我们需要能够处理最简单的数据单元：数字，字符串，结构体，布尔值等。 TypeScript支持与JavaScript几乎相同的数据类型，此外还提供了实用的枚举类型方便我们使用。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">布尔值  </span><br><span class="line"><span class="built_in">let</span> isDone: boolean = <span class="literal">false</span>;</span><br><span class="line">数字    </span><br><span class="line"><span class="built_in">let</span> decLiteral: number = 6;</span><br><span class="line"><span class="built_in">let</span> hexLiteral: number = 0xf00d; （16进制）</span><br><span class="line">字符串  </span><br><span class="line"><span class="built_in">let</span> name: string = <span class="string">&quot;gc&quot;</span>;</span><br><span class="line">数组    </span><br><span class="line"><span class="built_in">let</span> arr: number[] = [1, 2, 3]</span><br><span class="line">Array&lt;元素类型&gt;：<span class="built_in">let</span> list: Array&lt;number&gt; = [1, 2, 3];</span><br><span class="line">元组 Tuple</span><br><span class="line"><span class="built_in">let</span> x: [string, number];</span><br><span class="line">// Initialize it</span><br><span class="line">x = [<span class="string">&#x27;hello&#x27;</span>, 10]; // OK</span><br><span class="line">// Initialize it incorrectly</span><br><span class="line">x = [10, <span class="string">&#x27;hello&#x27;</span>]; // Error(规定数据类型)</span><br><span class="line">Any    </span><br><span class="line"><span class="built_in">let</span> notSure: any = 4;</span><br><span class="line">notSure = <span class="string">&quot;maybe a string instead&quot;</span>;</span><br><span class="line">notSure = <span class="literal">false</span>; // okay, definitely a boolean        </span><br><span class="line">Void</span><br><span class="line">声明一个void类型的变量没有什么大用，因为你只能为它赋予undefined和null：</span><br><span class="line"><span class="built_in">let</span> unusable: void = undefined;</span><br><span class="line">Null 和 Undefined</span><br><span class="line">TypeScript里，undefined和null两者各自有自己的类型分别叫做undefined和null。 和 void相似，它们的本身的类型用处不是很大：</span><br><span class="line">// Not much <span class="keyword">else</span> we can assign to these variables!</span><br><span class="line"><span class="built_in">let</span> u: undefined = undefined;</span><br><span class="line"><span class="built_in">let</span> n: null = null;</span><br></pre></td></tr></table></figure>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2020/12/27/react-hooks/">
+        react-hooks →
+    </a>
+    
+</nav>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
-        </div>
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
