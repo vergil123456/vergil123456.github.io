@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>Archives: 2020 | Hexo</title>
+  <title>变量提升，严格模式 | Hexo</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -59,7 +59,7 @@
 </head>
 
 <!--
-<body class="home-template">
+<body class="post-template">
 -->
 <body id="index" class="lightnav animsition">
 
@@ -167,96 +167,90 @@
         <!-- ============================ Header & Logo bar =========================== -->
 
 
-      <!-- ============================ Hero Image =========================== -->
-
-<section id="hero" class="scrollme">
-    <div class="container-fluid element-img" style="background: url(/img/bg_img.jpg) no-repeat center center fixed;background-size: cover">
-        <div class="row">
-            <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 vertical-align cover boost text-center">
-                <div class="center-me animateme" data-when="exit" data-from="0" data-to="0.6" data-opacity="0" data-translatey="100">
-                    <div>
-                        
-                        <h2>YOU'VE MADE A <span>BRAVE</span> DECISION, WELCOME.</h2>
-                        <p></p>
-                        
-                        <h2></h2>
-                        <p>每一个不曾起舞的日子都是对生命的辜负。</p>
-                        
-
-                    </div>
-                </div>
-            </div>
-            <!-- // .col-md-12 -->
-        </div>
-        <div class="herofade beige-dk"></div>
-    </div>
-</section>
-
-<!-- Height spacing helper -->
-<div class="heightblock"></div>
-<!-- // End height spacing helper -->
-
-<!-- ============================ END Hero Image =========================== -->
-
-
-
-
-<section id="services">
+      
+<section id="intro">
     <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="row boxes">
-                    
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2020/12/31/变量提升，严格模式/">变量提升，严格模式</a></h4>
-                            
-                            <p><time datetime="2020-12-31T00:25:14.000Z"><a href="/2020/12/31/变量提升，严格模式/">2020-12-31</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2020/12/29/ts/">ts</a></h4>
-                            
-                            <p><time datetime="2020-12-29T11:20:57.000Z"><a href="/2020/12/29/ts/">2020-12-29</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2020/12/27/react-hooks/">react-hooks</a></h4>
-                            
-                            <p><time datetime="2020-12-27T10:02:11.000Z"><a href="/2020/12/27/react-hooks/">2020-12-27</a></time></p>
-                        </div>
-                    
-                        
-                        
-                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
-                            
-                              <h4 class="title"><a href="/2020/12/26/hello-world/">Hello World</a></h4>
-                            
-                            <p><time datetime="2020-12-26T01:48:34.170Z"><a href="/2020/12/26/hello-world/">2020-12-26</a></time></p>
-                        </div>
-                    
-                </div>
-            </div>    
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-12-31T00:25:14.000Z" itemprop="datePublished">
+          2020-12-31
+      </time>
+    
+</span>
+                <h1>变量提升，严格模式</h1>
+            </div>
         </div>
-    </div>
-</section> 
+        <div class="col-md-8 col-md-offset-2">
+      		<h3 id="JavaScript-严格模式-use-strict"><a href="#JavaScript-严格模式-use-strict" class="headerlink" title="JavaScript 严格模式(use strict)"></a>JavaScript 严格模式(use strict)</h3><h2 id="使用-“use-strict”-指令"><a href="#使用-“use-strict”-指令" class="headerlink" title="使用 “use strict” 指令"></a>使用 “use strict” 指令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;use strict&quot;</span> 指令在 JavaScript 1.8.5 (ECMAScript5) 中新增。</span><br><span class="line"></span><br><span class="line">它不是一条语句，但是是一个字面量表达式，在 JavaScript 旧版本中会被忽略。</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;use strict&quot;</span> 的目的是指定代码在严格条件下执行。</span><br><span class="line"></span><br><span class="line">严格模式下你不能使用未声明的变量。</span><br></pre></td></tr></table></figure>
+<h3 id="JavaScript-变量提升"><a href="#JavaScript-变量提升" class="headerlink" title="JavaScript 变量提升"></a>JavaScript 变量提升</h3><h2 id="使用-“use-strict”-指令-1"><a href="#使用-“use-strict”-指令-1" class="headerlink" title="使用 “use strict” 指令"></a>使用 “use strict” 指令</h2><h1 id="JavaScript-中，函数及变量的声明都将被提升到函数的最顶部。JavaScript-中，变量可以在使用后声明，也就是变量可以先使用再声明。"><a href="#JavaScript-中，函数及变量的声明都将被提升到函数的最顶部。JavaScript-中，变量可以在使用后声明，也就是变量可以先使用再声明。" class="headerlink" title="JavaScript 中，函数及变量的声明都将被提升到函数的最顶部。JavaScript 中，变量可以在使用后声明，也就是变量可以先使用再声明。"></a>JavaScript 中，函数及变量的声明都将被提升到函数的最顶部。JavaScript 中，变量可以在使用后声明，也就是变量可以先使用再声明。</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x = 5; // 变量 x 设置为 5</span><br><span class="line"></span><br><span class="line">elem = document.getElementById(<span class="string">&quot;demo&quot;</span>); // 查找元素</span><br><span class="line">elem.innerHTML = x;                     // 在元素中显示 x</span><br><span class="line"></span><br><span class="line">var x; // 声明 x</span><br></pre></td></tr></table></figure>
+<h1 id="JavaScript-初始化不会提升，JavaScript-只有声明的变量会提升，初始化的不会。"><a href="#JavaScript-初始化不会提升，JavaScript-只有声明的变量会提升，初始化的不会。" class="headerlink" title="JavaScript 初始化不会提升，JavaScript 只有声明的变量会提升，初始化的不会。"></a>JavaScript 初始化不会提升，JavaScript 只有声明的变量会提升，初始化的不会。</h1>
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    
+    <a class="pull-right" href="/2020/12/29/ts/">
+        ts →
+    </a>
+    
+</nav>
 
-<section id="statement">
-    <div class="container text-center wow fadeInUp" data-wow-delay="0.5s">
-        <div class="row">
-            <p>虽然还没想好写点什么，但是总觉得这里放句话比较和谐。</p>
-        </div>
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
     </div>
 </section>
+
+
       
 <!-- ============================ Footer =========================== -->
 
