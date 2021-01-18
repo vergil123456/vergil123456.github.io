@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>防抖节流 | Hexo</title>
+  <title>闭包 | Hexo</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -173,30 +173,25 @@
         <div class="row col-md-offset-2">
             <div class="col-md-8">
     			<span class="post-meta">
-      <time datetime="2021-01-14T11:13:22.000Z" itemprop="datePublished">
-          2021-01-14
+      <time datetime="2021-01-17T11:28:30.000Z" itemprop="datePublished">
+          2021-01-17
       </time>
     
 </span>
-                <h1>防抖节流</h1>
+                <h1>闭包</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
-      		<h3 id="防抖"><a href="#防抖" class="headerlink" title="防抖"></a>防抖</h3><h2 id="在第一次触发事件时，不立即执行函数，而是给出一个期限值比如200ms，然后："><a href="#在第一次触发事件时，不立即执行函数，而是给出一个期限值比如200ms，然后：" class="headerlink" title="在第一次触发事件时，不立即执行函数，而是给出一个期限值比如200ms，然后："></a>在第一次触发事件时，不立即执行函数，而是给出一个期限值比如200ms，然后：</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">如果在200ms内没有再次触发滚动事件，那么就执行函数</span><br><span class="line">如果在200ms内再次触发滚动事件，那么当前的计时取消，重新开始计时</span><br><span class="line">效果：如果短时间内大量触发同一事件，只会执行一次函数。</span><br><span class="line"></span><br><span class="line">实现：既然前面都提到了计时，那实现的关键就在于setTimeout这个函数，由于还需要一个变量来保存计时，考虑维护全局纯净，可以借助闭包来实现：</span><br></pre></td></tr></table></figure>
-<h3 id="节流"><a href="#节流" class="headerlink" title="节流"></a>节流</h3><h2 id="如果在限定时间段内，不断触发滚动事件（比如某个用户闲着无聊，按住滚动不断的拖来拖去），只要不停止触发，理论上就永远不会输出当前距离顶部的距离。"><a href="#如果在限定时间段内，不断触发滚动事件（比如某个用户闲着无聊，按住滚动不断的拖来拖去），只要不停止触发，理论上就永远不会输出当前距离顶部的距离。" class="headerlink" title="如果在限定时间段内，不断触发滚动事件（比如某个用户闲着无聊，按住滚动不断的拖来拖去），只要不停止触发，理论上就永远不会输出当前距离顶部的距离。"></a>如果在限定时间段内，不断触发滚动事件（比如某个用户闲着无聊，按住滚动不断的拖来拖去），只要不停止触发，理论上就永远不会输出当前距离顶部的距离。</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 节流throttle代码（时间戳+定时器）：</span><br><span class="line">var throttle = <span class="keyword">function</span>(func, delay) &#123;     </span><br><span class="line">    var timer = null;     </span><br><span class="line">    var startTime = Date.now();     </span><br><span class="line">    <span class="built_in">return</span> <span class="function"><span class="title">function</span></span>() &#123;             </span><br><span class="line">        var curTime = Date.now();             </span><br><span class="line">        var remaining = delay - (curTime - startTime);             </span><br><span class="line">        var context = this;             </span><br><span class="line">        var args = arguments;             </span><br><span class="line">        clearTimeout(timer);              </span><br><span class="line">        <span class="keyword">if</span> (remaining &lt;= 0) &#123;                    </span><br><span class="line">            func.apply(context, args);                    </span><br><span class="line">            startTime = Date.now();              </span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;                    </span><br><span class="line">            timer = setTimeout(func, remaining);              </span><br><span class="line">        &#125;      </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">handle</span></span>() &#123;      </span><br><span class="line">    console.log(Math.random());</span><br><span class="line">&#125; </span><br><span class="line">window.addEventListener(<span class="string">&#x27;scroll&#x27;</span>, throttle(handle, 1000));</span><br><span class="line">在节流函数内部使用开始时间startTime、当前时间curTime与delay来计算剩余时间remaining，当remaining&lt;=0时表示该执行事件处理函数了（保证了第一次触发事件就能立即执行事件处理函数和每隔delay时间执行一次事件处理函数）。如果还没到时间的话就设定在remaining时间后再触发 （保证了最后一次触发事件后还能再执行一次事件处理函数）。当然在remaining这段时间中如果又一次触发事件，那么会取消当前的计时器，并重新计算一个remaining来判断当前状态。</span><br></pre></td></tr></table></figure>
-<h2 id="区别：-函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。-比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次-Ajax-请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。"><a href="#区别：-函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。-比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次-Ajax-请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。" class="headerlink" title="区别： 函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。 比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。"></a>区别： 函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。 比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。</h2>
+      		<h2 id="闭包的含义"><a href="#闭包的含义" class="headerlink" title="闭包的含义"></a>闭包的含义</h2><h3 id="官方对闭包的解释：一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。"><a href="#官方对闭包的解释：一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。" class="headerlink" title="官方对闭包的解释：一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。"></a>官方对闭包的解释：一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。</h3><h2 id="闭包的特点"><a href="#闭包的特点" class="headerlink" title="闭包的特点"></a>闭包的特点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">作为一个函数变量的一个引用，当函数返回时，其处于激活状态。</span><br><span class="line">一个闭包就是当一个函数返回时，一个没有释放资源的栈区。</span><br><span class="line">简单的闭包如下：</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">f1</span></span>()&#123;</span><br><span class="line">var n = 100;</span><br><span class="line"><span class="built_in">return</span> <span class="keyword">function</span> <span class="function"><span class="title">f2</span></span>()&#123;</span><br><span class="line"> alert(++n);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="函数执行时创建了一个内部函数，这个内部函数作为返回值，或以某种方式保留下来（属性），之后才会调用，这就会形成了闭包。通俗来讲，JS所有的function都是一个闭包"><a href="#函数执行时创建了一个内部函数，这个内部函数作为返回值，或以某种方式保留下来（属性），之后才会调用，这就会形成了闭包。通俗来讲，JS所有的function都是一个闭包" class="headerlink" title="函数执行时创建了一个内部函数，这个内部函数作为返回值，或以某种方式保留下来（属性），之后才会调用，这就会形成了闭包。通俗来讲，JS所有的function都是一个闭包"></a>函数执行时创建了一个内部函数，这个内部函数作为返回值，或以某种方式保留下来（属性），之后才会调用，这就会形成了闭包。通俗来讲，JS所有的function都是一个闭包</h3><h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">优点</span><br><span class="line">    1.可以读取函数内部的变量</span><br><span class="line">    2.可以让这些局部变量保存在内存中，实现变量数据共享。</span><br><span class="line">缺点</span><br><span class="line">    1.由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。</span><br><span class="line">    2.闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
             <div class="clearfix"></div>
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
     
-    <a class="pull-left" href="/2021/01/17/%E9%97%AD%E5%8C%85/" style="float: left;">
-        ← 闭包
-    </a>
     
-    
-    <a class="pull-right" href="/2021/01/14/js%E4%B8%AD%E7%9A%84new/">
-        js中的new →
+    <a class="pull-right" href="/2021/01/14/%E9%98%B2%E6%8A%96%E8%8A%82%E6%B5%81/">
+        防抖节流 →
     </a>
     
 </nav>
